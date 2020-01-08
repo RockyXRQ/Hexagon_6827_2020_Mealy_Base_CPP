@@ -3,31 +3,31 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/Timer.h>
 
-#include "loops/looper.h"
+#include "loops/Looper.h"
 
-looper::looper() {
+Looper::Looper() {
     m_timesTamp = frc::Timer::GetFPGATimestamp();
 }
 
-looper::looper(std::list<loop &> &tempLoopList, const char *name = "default")
-    : looper() {
+Looper::Looper(std::list<Loop &> &tempLoopList, const char *name = "default")
+    : Looper() {
     m_looperName = name;
     for (auto &l : tempLoopList) {
         SingleRegister(l);
     }
 }
 
-void looper::SingleRegister(loop &tempLoop) {
+void Looper::SingleRegister(Loop &tempLoop) {
     m_loopList.push_back(tempLoop);
 }
 
-void looper::MutiRegister(std::list<loop &> &tempLoopList) {
+void Looper::MutiRegister(std::list<Loop &> &tempLoopList) {
     for (auto &l : tempLoopList) {
         SingleRegister(l);
     }
 }
 
-void looper::StartLoop() {
+void Looper::StartLoop() {
     std::cout << m_looperName << " start looping" << std::endl;
     for (auto &l : m_loopList) {
         l.onStart();
@@ -35,14 +35,14 @@ void looper::StartLoop() {
     m_Running = true;
 }
 
-void looper::RunLoop() {
+void Looper::RunLoop() {
     std::cout << m_looperName << " is looping" << std::endl;
     for (auto &l : m_loopList) {
         l.onLoop();
     }
 }
 
-void looper::StopLoop() {
+void Looper::StopLoop() {
     std::cout << m_looperName << " stop looping" << std::endl;
     for (auto &l : m_loopList) {
         l.onStop();
@@ -50,8 +50,8 @@ void looper::StopLoop() {
     m_Running = false;
 }
 
-void looper::OutputToSmartDashboard() {
+void Looper::OutputToSmartDashboard() {
     double m_dt =
         -(m_timesTamp - (m_timesTamp = frc::Timer::GetFPGATimestamp()));
-    frc::SmartDashboard::PutNumber(m_looperName + " loop rate", 1.0 / m_dt);
+    frc::SmartDashboard::PutNumber(m_looperName + " Loop rate", 1.0 / m_dt);
 }

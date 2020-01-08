@@ -4,27 +4,27 @@
 #include <list>
 #include <string>
 
-#include "loops/loop.h"
+#include "loops/Loop.h"
 
-class looper {
+class Looper {
    private:
-    std::list<loop &> m_loopList;
+    std::list<Loop &> m_loopList;
     std::string m_looperName;
     bool m_Running = false;
 
     double m_timesTamp;
 
    public:
-    looper();
-    looper(std::list<loop &> &, const char *name = "default");
+    Looper();
+    Looper(std::list<Loop &> &, const char *name = "default");
 
-    looper(const looper &) = default;
-    looper(looper &&) = default;
+    Looper(const Looper &) = default;
+    Looper(Looper &&) = default;
 
-    ~looper() = default;
+    ~Looper() = default;
 
-    void MutiRegister(std::list<loop &> &);
-    void SingleRegister(loop &);
+    void MutiRegister(std::list<Loop &> &);
+    void SingleRegister(Loop &);
 
     void StartLoop();
     void RunLoop();
