@@ -1,13 +1,36 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
+#ifndef SUPERSTRUCTURE_OUTPUTER_H_
+#define SUPERSTRUCTURE_OUTPUTER_H_
 
-#pragma once
+#include <list>
 
-class SuperStructureOutputer {
- public:
-  SuperStructureOutputer();
+#include "infraSubsystemsOutputer/InfraSubsystemOutputer.h"
+#include "subsystems/Subsystem.h"
+#include "loops/Looper.h"
+#include "loops/Loop.h"
+class SuperStructureOutputer : public InfraSubsystemOutputer {
+   private:
+    static std::list<Subsystem &> m_subsystemList;
+    class EnabledLoop : public Loop {
+       public:
+        EnabledLoop();
+        void onStart(double timeTamp = 0) override;
+        void onLoop(double timeTamp = 0) override;
+        void onStop(double timeTamp = 0) override;
+    } m_superStructureEnabledLoop;
+
+    class DisabledLoop : public Loop {
+       public:
+        DisabledLoop();
+        void onStart(double timeTamp = 0) override;
+        void onLoop(double timeTamp = 0) override;
+        void onStop(double timeTamp = 0) override;
+    } m_superStructureDisabledLoop;
+
+   public:
+    SuperStructureOutputer(std::list<Subsystem &> &);
+
+    void RegisterEnabledloops(Looper &) override;
+    void RegisterDisabledloops(Looper &) override;
 };
+
+#endif

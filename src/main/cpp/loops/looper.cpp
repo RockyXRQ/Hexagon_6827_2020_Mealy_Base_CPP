@@ -13,17 +13,17 @@ Looper::Looper(std::list<Loop &> &tempLoopList, const char *name = "default")
     : Looper() {
     m_looperName = name;
     for (auto &l : tempLoopList) {
-        SingleRegister(l);
+        Register(l);
     }
 }
 
-void Looper::SingleRegister(Loop &tempLoop) {
+void Looper::Register(Loop &tempLoop) {
     m_loopList.push_back(tempLoop);
 }
 
 void Looper::MutiRegister(std::list<Loop &> &tempLoopList) {
     for (auto &l : tempLoopList) {
-        SingleRegister(l);
+        Register(l);
     }
 }
 

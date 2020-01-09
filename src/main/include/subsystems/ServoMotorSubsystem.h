@@ -26,12 +26,6 @@ class ServoMotorSubsystem : public Subsystem {
     double PositionPIDOutput(double actualPosition, double targetPosition);
     void SetMaxIOutput(double MaxIOutput = 1);
     void SetMaxDOutput(double MaxDOutput = 1);
-
-    virtual void RegisterEnabledloop(Looper&) = 0;
-    virtual void ReadInput() = 0;
-    virtual void WriteOutput() = 0;
-    virtual void PrintToLog() = 0;
-    virtual void ZeroSensors() = 0;
 };
 
 #endif

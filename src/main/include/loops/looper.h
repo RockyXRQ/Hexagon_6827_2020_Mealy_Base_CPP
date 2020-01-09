@@ -7,7 +7,7 @@
 #include "loops/Loop.h"
 
 class Looper {
-   private:
+   protected:
     std::list<Loop &> m_loopList;
     std::string m_looperName;
     bool m_Running = false;
@@ -21,7 +21,7 @@ class Looper {
     virtual ~Looper() = default;
 
     void MutiRegister(std::list<Loop &> &);
-    void SingleRegister(Loop &);
+    void Register(Loop &);
 
     void StartLoop();
     void RunLoop();

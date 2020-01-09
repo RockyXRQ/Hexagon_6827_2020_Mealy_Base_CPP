@@ -1,10 +1,57 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 #include "infraSubsystemsOutputer/SuperStructureOutputer.h"
 
-SuperStructureOutputer::SuperStructureOutputer() {}
+SuperStructureOutputer::SuperStructureOutputer(
+    std::list<Subsystem &> &tempSubsystemList) {
+    m_subsystemList = tempSubsystemList;
+}
+
+void SuperStructureOutputer::EnabledLoop::onStart(double timeTamp = 0) {
+    for (auto &s : m_subsystemList) {
+        s.ReadInput();
+        s.PrintToLog();
+    }
+}
+
+void SuperStructureOutputer::EnabledLoop::onLoop(double timeTamp = 0) {
+    for (auto &s : m_subsystemList) {
+        s.ReadInput();
+        s.WriteOutput();
+        s.PrintToLog();
+    }
+}
+
+void SuperStructureOutputer::EnabledLoop::onStop(double timeTamp = 0) {
+    for (auto &s : m_subsystemList) {
+        s.ReadInput();
+        s.PrintToLog();
+    }
+}
+
+void SuperStructureOutputer::DisabledLoop::onStart(double timeTamp = 0) {
+    for (auto &s : m_subsystemList) {
+        s.ReadInput();
+        s.PrintToLog();
+    }
+}
+
+void SuperStructureOutputer::DisabledLoop::onLoop(double timeTamp = 0) {
+    for (auto &s : m_subsystemList) {
+        s.ReadInput();
+        s.PrintToLog();
+    }
+}
+
+void SuperStructureOutputer::DisabledLoop::onStop(double timeTamp = 0) {
+    for (auto &s : m_subsystemList) {
+        s.ReadInput();
+        s.PrintToLog();
+    }
+}
+
+void SuperStructureOutputer::RegisterEnabledloops(Looper &tempEnabledLooper) {
+    tempEnabledLooper.Register(m_superStructureEnabledLoop);
+}
+
+void SuperStructureOutputer::RegisterDisabledloops(Looper &tempDisabledLooper) {
+    tempDisabledLooper.Register(m_superStructureDisabledLoop);
+}
