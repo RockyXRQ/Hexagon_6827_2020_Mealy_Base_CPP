@@ -29,3 +29,8 @@ int main() {
     return frc::StartRobot<Robot>();
 }
 #endif
+
+/*
+    1. EnabledLooper & DisabledLooper contorl the state update.
+    2. Subsystem manager controal the ReadInput() & WriteOutput().
+*/

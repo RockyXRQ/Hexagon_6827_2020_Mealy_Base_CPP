@@ -7,7 +7,7 @@
 
 #pragma once
 
-class ExampleSuperStructurePart {
+class ChassisOutputer {
  public:
-  ExampleSuperStructurePart();
+  ChassisOutputer();
 };

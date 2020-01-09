@@ -5,9 +5,6 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "infraSubsystemsOutputer/SuperStructureOutputer.h"
 
-class SubsystemManager {
- public:
-  SubsystemManager();
-};
+SuperStructureOutputer::SuperStructureOutputer() {}

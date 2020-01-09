@@ -18,10 +18,7 @@ class Looper {
     Looper();
     Looper(std::list<Loop &> &, const char *name = "default");
 
-    Looper(const Looper &) = default;
-    Looper(Looper &&) = default;
-
-    ~Looper() = default;
+    virtual ~Looper() = default;
 
     void MutiRegister(std::list<Loop &> &);
     void SingleRegister(Loop &);
