@@ -5,10 +5,9 @@
 #include "subsystems/Chassis.h"
 
 Chassis::Chassis() {
+    std::cout << "the subsystem Chassis instantiate!" << std::endl;
 }
 
-void Chassis::RegisterEnabledloop(Looper& tempLooper) {
-}
 
 void Chassis::ReadInput() {
 }

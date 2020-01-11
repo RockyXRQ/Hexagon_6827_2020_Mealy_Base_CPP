@@ -7,30 +7,28 @@
 #include "loops/Looper.h"
 
 class Intake : public ServoMotorSubsystem {
-    ctre::phoenix::motorcontrol::can::VictorSPX m_leftMotor{0};
-    ctre::phoenix::motorcontrol::can::VictorSPX m_rightMotor{1};
+    ctre::phoenix::motorcontrol::can::VictorSPX m_leftMotor{2};
+    ctre::phoenix::motorcontrol::can::VictorSPX m_rightMotor{3};
 
-	class PeriodicIO {
+    class PeriodicIO {
        public:
         // INPUT
-        
+
         // OUTPUT
         double m_o_spinDemand;
-        
+
     } m_periodicIO;
 
    public:
     Intake();
-
-    void RegisterEnabledloop(Looper&) override;
 
     void ReadInput() override;
     void WriteOutput() override;
     void ZeroSensors() override;
     void PrintToLog() override;
 
-	void SetOpenLoopState();
-	void SetPositionPIDState();
+    void SetOpenLoopState(double tempSpinSpeed = 0);
+    void SetPositionPIDState();
 };
 
 #endif

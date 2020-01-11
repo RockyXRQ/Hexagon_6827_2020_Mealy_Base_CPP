@@ -1,6 +1,9 @@
 #include "stateMachines/ChassisStateMachine.h"
 
-ChassisStateMachine::ChassisStateMachine(Chassis* tempChassis) {
+ChassisStateMachine::ChassisStateMachine() {
+}
+
+void ChassisStateMachine::RegisterChassis(Chassis* tempChassis) {
     m_chassis = tempChassis;
 }
 

@@ -23,8 +23,6 @@ class Chassis : public ServoMotorSubsystem {
    public:
     Chassis();
 
-    void RegisterEnabledloop(Looper&) override;
-
     void ReadInput() override;
     void WriteOutput() override;
     void ZeroSensors() override;

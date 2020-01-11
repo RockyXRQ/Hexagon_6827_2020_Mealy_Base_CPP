@@ -8,7 +8,8 @@ class ChassisStateMachine {
     Chassis *m_chassis;
 
    public:
-    ChassisStateMachine(Chassis *);
+    ChassisStateMachine();
+    void RegisterChassis(Chassis *);
     void WantAutoMode();
     void WantManualRudeMode(double tempLeftDemand = 0,
                             double tempRightDemand = 0);
