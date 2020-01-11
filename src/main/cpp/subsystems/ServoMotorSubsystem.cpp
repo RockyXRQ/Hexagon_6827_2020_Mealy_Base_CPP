@@ -24,6 +24,3 @@ double ServoMotorSubsystem::PositionPIDOutput(double actualPosition,
     m_lastError = m_error;
     return pOutput + iOutput + dOutput;
 }
-
-ServoMotorSubsystem::~ServoMotorSubsystem() {
-}

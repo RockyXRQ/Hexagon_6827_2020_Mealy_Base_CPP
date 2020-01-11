@@ -12,7 +12,6 @@ class SuperStructureOutputer : public InfraSubsystemOutputer {
     static std::vector<Subsystem *> *m_subsystemList;
     class EnabledLoop : public Loop {
        public:
-        EnabledLoop();
         void onStart(double timeTamp = 0) override;
         void onLoop(double timeTamp = 0) override;
         void onStop(double timeTamp = 0) override;
@@ -20,7 +19,6 @@ class SuperStructureOutputer : public InfraSubsystemOutputer {
 
     class DisabledLoop : public Loop {
        public:
-        DisabledLoop();
         void onStart(double timeTamp = 0) override;
         void onLoop(double timeTamp = 0) override;
         void onStop(double timeTamp = 0) override;

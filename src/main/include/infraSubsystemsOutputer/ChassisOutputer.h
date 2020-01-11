@@ -10,7 +10,6 @@ class ChassisOutputer : public InfraSubsystemOutputer {
     static Chassis *m_chassis;
     class EnabledLoop : public Loop {
        public:
-        EnabledLoop();
         void onStart(double timeTamp = 0) override;
         void onLoop(double timeTamp = 0) override;
         void onStop(double timeTamp = 0) override;
@@ -18,7 +17,6 @@ class ChassisOutputer : public InfraSubsystemOutputer {
 
     class DisabledLoop : public Loop {
        public:
-        DisabledLoop();
         void onStart(double timeTamp = 0) override;
         void onLoop(double timeTamp = 0) override;
         void onStop(double timeTamp = 0) override;

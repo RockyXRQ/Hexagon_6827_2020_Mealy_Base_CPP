@@ -6,14 +6,14 @@ SuperStructureOutputer::SuperStructureOutputer(
 }
 
 void SuperStructureOutputer::EnabledLoop::onStart(double timeTamp) {
-    for (auto s : *m_subsystemList) {
+    for (auto s : *SuperStructureOutputer::m_subsystemList) {
         s->ReadInput();
         s->PrintToLog();
     }
 }
 
 void SuperStructureOutputer::EnabledLoop::onLoop(double timeTamp) {
-    for (auto s : *m_subsystemList) {
+    for (auto s : *SuperStructureOutputer::m_subsystemList) {
         s->ReadInput();
         s->WriteOutput();
         s->PrintToLog();
@@ -21,28 +21,28 @@ void SuperStructureOutputer::EnabledLoop::onLoop(double timeTamp) {
 }
 
 void SuperStructureOutputer::EnabledLoop::onStop(double timeTamp) {
-    for (auto s : *m_subsystemList) {
+    for (auto s : *SuperStructureOutputer::m_subsystemList) {
         s->ReadInput();
         s->PrintToLog();
     }
 }
 
 void SuperStructureOutputer::DisabledLoop::onStart(double timeTamp) {
-    for (auto s : *m_subsystemList) {
+    for (auto s : *SuperStructureOutputer::m_subsystemList) {
         s->ReadInput();
         s->PrintToLog();
     }
 }
 
 void SuperStructureOutputer::DisabledLoop::onLoop(double timeTamp) {
-    for (auto s : *m_subsystemList) {
+    for (auto s : *SuperStructureOutputer::m_subsystemList) {
         s->ReadInput();
         s->PrintToLog();
     }
 }
 
 void SuperStructureOutputer::DisabledLoop::onStop(double timeTamp) {
-    for (auto s : *m_subsystemList) {
+    for (auto s : *SuperStructureOutputer::m_subsystemList) {
         s->ReadInput();
         s->PrintToLog();
     }
