@@ -13,7 +13,7 @@ class SuperStructureOutputer : public Loop {
    public:
     SuperStructureOutputer();
 
-    void RegisterSubsystem(Subsystem *) override;
+    void RegisterSubsystem(Subsystem *);
     void OnStart(double timeTamp = 0) override;
     void OnLoop(double timeTamp = 0) override;
     void OnStop(double timeTamp = 0) override;

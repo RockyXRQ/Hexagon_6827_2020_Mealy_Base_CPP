@@ -4,8 +4,8 @@ ChassisOutputer::ChassisOutputer() {
     std::cout << "the loop ChassisOutputer instantiate!" << std::endl;
 }
 
-void ChassisOutputer::RegisterSubsystem(Subsystem* tempSubsystem) {
-    m_chassis = (Chassis*) tempSubsystem;
+void ChassisOutputer::RegisterSubsystem(Chassis* tempChassis) {
+    m_chassis = tempChassis;
 }
 
 void ChassisOutputer::OnStart(double timeTamp) {

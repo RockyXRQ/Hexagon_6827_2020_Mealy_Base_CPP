@@ -6,7 +6,6 @@
 
 class Loop {
    public:
-    virtual void RegisterSubsystem(Subsystem*) = 0;
     virtual void OnStart(double timeTamp = 0) = 0;
     virtual void OnLoop(double timeTamp = 0) = 0;
     virtual void OnStop(double timeTamp = 0) = 0;
