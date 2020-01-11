@@ -15,12 +15,8 @@ class Looper {
     double m_timesTamp;
 
    public:
-    Looper();
-    Looper(std::vector<Loop *> *, const char *name = "default");
+    Looper(const char *name = "default");
 
-    virtual ~Looper() = default;
-
-    void MutiRegister(std::vector<Loop *> *);
     void Register(Loop *);
 
     void StartLoop();

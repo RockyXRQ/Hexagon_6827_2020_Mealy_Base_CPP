@@ -3,32 +3,20 @@
 
 #include <vector>
 
-#include "infraSubsystemsOutputer/InfraSubsystemOutputer.h"
 #include "subsystems/Subsystem.h"
-#include "loops/Looper.h"
 #include "loops/Loop.h"
-class SuperStructureOutputer : public InfraSubsystemOutputer {
-   private:
-    static std::vector<Subsystem *> *m_subsystemList;
-    class EnabledLoop : public Loop {
-       public:
-        void onStart(double timeTamp = 0) override;
-        void onLoop(double timeTamp = 0) override;
-        void onStop(double timeTamp = 0) override;
-    } m_superStructureEnabledLoop;
 
-    class DisabledLoop : public Loop {
-       public:
-        void onStart(double timeTamp = 0) override;
-        void onLoop(double timeTamp = 0) override;
-        void onStop(double timeTamp = 0) override;
-    } m_superStructureDisabledLoop;
+class SuperStructureOutputer : public Loop {
+   private:
+    std::vector<Subsystem *> m_subsystemList;
 
    public:
-    SuperStructureOutputer(std::vector<Subsystem *> *);
+    SuperStructureOutputer();
 
-    void RegisterEnabledloops(Looper &) override;
-    void RegisterDisabledloops(Looper &) override;
+    void RegisterSubsystem(Subsystem *) override;
+    void OnStart(double timeTamp = 0) override;
+    void OnLoop(double timeTamp = 0) override;
+    void OnStop(double timeTamp = 0) override;
 };
 
 #endif

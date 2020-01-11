@@ -1,27 +1,26 @@
-#ifndef CHASSIS_H_
-#define CHASSIS_H_
+#ifndef INTAKE_H_
+#define INTAKE_H_
 
 #include <ctre/Phoenix.h>
 
 #include "subsystems/ServoMotorSubsystem.h"
 #include "loops/Looper.h"
 
-class Chassis : public ServoMotorSubsystem {
-   private:
+class Intake : public ServoMotorSubsystem {
     ctre::phoenix::motorcontrol::can::VictorSPX m_leftMotor{0};
     ctre::phoenix::motorcontrol::can::VictorSPX m_rightMotor{1};
 
-    class PeriodicIO {
+	class PeriodicIO {
        public:
         // INPUT
-        double m_i_kSpeerRate = 1;
+        
         // OUTPUT
-        double m_o_leftDemand;
-        double m_o_rightDemand;
+        double m_o_spinDemand;
+        
     } m_periodicIO;
 
    public:
-    Chassis();
+    Intake();
 
     void RegisterEnabledloop(Looper&) override;
 
@@ -30,12 +29,8 @@ class Chassis : public ServoMotorSubsystem {
     void ZeroSensors() override;
     void PrintToLog() override;
 
-    void SetOpenLoopState(double tempLeftDemand = 0,
-                          double tempRightDemand = 0);
-    void SetPositionPIDState();
-
-    void SetHighSpeedMode();
-    void SetLowSpeedMode();
+	void SetOpenLoopState();
+	void SetPositionPIDState();
 };
 
 #endif
