@@ -1,13 +1,19 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
+#ifndef CHASSIS_STATEMACHINE_H_
+#define CHASSIS_STATEMACHINE_H_
 
-#pragma once
+#include "subsystems/Chassis.h"
 
 class ChassisStateMachine {
- public:
-  ChassisStateMachine();
+   private:
+    Chassis *m_chassis;
+
+   public:
+    ChassisStateMachine(Chassis *);
+    void WantAutoMode();
+    void WantManualRudeMode(double tempLeftDemand = 0,
+                            double tempRightDemand = 0);
+    void WantManualCarefulMode(double tempLeftDemand = 0,
+                               double tempRightDemand = 0);
 };
+
+#endif

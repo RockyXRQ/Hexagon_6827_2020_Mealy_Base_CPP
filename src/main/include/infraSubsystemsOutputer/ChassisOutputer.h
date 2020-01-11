@@ -7,7 +7,7 @@
 #include "loops/Loop.h"
 class ChassisOutputer : public InfraSubsystemOutputer {
    private:
-    static Chassis m_chassis;
+    static Chassis *m_chassis;
     class EnabledLoop : public Loop {
        public:
         EnabledLoop();
@@ -25,7 +25,7 @@ class ChassisOutputer : public InfraSubsystemOutputer {
     } m_ChassisDisabledLoop;
 
    public:
-    ChassisOutputer(Chassis &);
+    ChassisOutputer(Chassis *);
 
     void RegisterEnabledloops(Looper &) override;
     void RegisterDisabledloops(Looper &) override;

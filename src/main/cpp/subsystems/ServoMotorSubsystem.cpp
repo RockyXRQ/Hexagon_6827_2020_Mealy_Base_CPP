@@ -1,17 +1,16 @@
 #include "subsystems/ServoMotorSubsystem.h"
 
-ServoMotorSubsystem::ServoMotorSubsystem(double kp = 0, double ki = 0,
-                                         double kd = 0) {
+ServoMotorSubsystem::ServoMotorSubsystem(double kp, double ki, double kd) {
     m_kp = kp;
     m_ki = ki;
     m_kd = kd;
 }
 
-void ServoMotorSubsystem::SetMaxIOutput(double MaxIOutput = 1) {
+void ServoMotorSubsystem::SetMaxIOutput(double MaxIOutput) {
     m_maxIOutput = MaxIOutput;
 }
 
-void ServoMotorSubsystem::SetMaxDOutput(double MaxDOutput = 1) {
+void ServoMotorSubsystem::SetMaxDOutput(double MaxDOutput) {
     m_maxDoutput = MaxDOutput;
 }
 
@@ -24,4 +23,7 @@ double ServoMotorSubsystem::PositionPIDOutput(double actualPosition,
     double dOutput = m_kd * (m_error - m_lastError);
     m_lastError = m_error;
     return pOutput + iOutput + dOutput;
+}
+
+ServoMotorSubsystem::~ServoMotorSubsystem() {
 }

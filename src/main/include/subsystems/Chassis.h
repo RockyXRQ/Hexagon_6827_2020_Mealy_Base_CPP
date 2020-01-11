@@ -1,9 +1,27 @@
 #ifndef CHASSIS_H_
 #define CHASSIS_H_
 
-#include "subsystems/Subsystem.h"
+#include <frc/RobotDrive.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <ctre/Phoenix.h>
 
-class Chassis : public Subsystem {
+#include "subsystems/ServoMotorSubsystem.h"
+#include "loops/Looper.h"
+
+class Chassis : public ServoMotorSubsystem {
+   private:
+    ctre::phoenix::motorcontrol::can::VictorSPX m_leftMotor{0};
+    ctre::phoenix::motorcontrol::can::VictorSPX m_rightMotor{0};
+
+    class PeriodicIO {
+       public:
+        // INPUT
+        double m_i_kSpeerRate = 1;
+        // OUTPUT
+        double m_o_leftDemand;
+        double m_o_rightDemand;
+    } m_periodicIO;
+
    public:
     Chassis();
 
@@ -11,8 +29,15 @@ class Chassis : public Subsystem {
 
     void ReadInput() override;
     void WriteOutput() override;
-    void PrintToLog() override;
     void ZeroSensors() override;
+    void PrintToLog() override;
+
+    void SetOpenLoopState(double tempLeftDemand = 0,
+                          double tempRightDemand = 0);
+    void SetPositionPIDState();
+
+    void SetHighSpeedMode();
+    void SetLowSpeedMode();
 };
 
 #endif

@@ -1,10 +1,22 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 #include "stateMachines/ChassisStateMachine.h"
 
-ChassisStateMachine::ChassisStateMachine() {}
+ChassisStateMachine::ChassisStateMachine(Chassis* tempChassis) {
+    m_chassis = tempChassis;
+}
+
+void ChassisStateMachine::WantAutoMode() {
+    m_chassis->SetLowSpeedMode();
+    m_chassis->SetPositionPIDState();
+}
+
+void ChassisStateMachine::WantManualRudeMode(double tempLeftDemand,
+                                             double tempRightDemand) {
+    m_chassis->SetHighSpeedMode();
+    m_chassis->SetOpenLoopState(tempLeftDemand, tempRightDemand);
+}
+
+void ChassisStateMachine::WantManualCarefulMode(double tempLeftDemand,
+                                                double tempRightDemand) {
+    m_chassis->SetLowSpeedMode();
+    m_chassis->SetOpenLoopState(tempLeftDemand, tempRightDemand);
+}

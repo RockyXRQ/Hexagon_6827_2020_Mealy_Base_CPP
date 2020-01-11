@@ -11,9 +11,22 @@
 #include <frc/WPILib.h>
 #include <frc/commands/Command.h>
 
+#include "loops/Looper.h"
+
+#include "controlBoard/ControlBoard.h"
+
+#include "subsystems/Chassis.h"
+
+#include "stateMachines/ChassisStateMachine.h"
+#include "stateMachines/SuperStructureStateMachine.h"
+
+#include "infraSubsystemsOutputer/ChassisOutputer.h"
+#include "infraSubsystemsOutputer/SuperStructureOutputer.h"
+
 class Robot : public frc::TimedRobot {
-   public:
-      private:
+   private:
+
+   
     void RobotInit() override;
     void RobotPeriodic() override;
     void AutonomousInit() override;

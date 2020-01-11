@@ -2,10 +2,11 @@
 #define SERVO_MOTOR_SUBSYSTEM_H_
 
 #include "subsystems/Subsystem.h"
+#include "loops/Looper.h"
 
 class ServoMotorSubsystem : public Subsystem {
    protected:
-    enum ControlState { OPEN_LOOP, POSITION_PID };
+    enum ControlState { OPEN_LOOP, POSITION_PID } m_state = OPEN_LOOP;
 
    private:
     double m_kp, m_ki, m_kd;
@@ -21,7 +22,6 @@ class ServoMotorSubsystem : public Subsystem {
 
    public:
     ServoMotorSubsystem(double kp = 0, double ki = 0, double kd = 0);
-    virtual ~ServoMotorSubsystem();
 
     double PositionPIDOutput(double actualPosition, double targetPosition);
     void SetMaxIOutput(double MaxIOutput = 1);

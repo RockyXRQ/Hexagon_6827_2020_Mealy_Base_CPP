@@ -1,7 +1,7 @@
 #ifndef SUPERSTRUCTURE_OUTPUTER_H_
 #define SUPERSTRUCTURE_OUTPUTER_H_
 
-#include <list>
+#include <vector>
 
 #include "infraSubsystemsOutputer/InfraSubsystemOutputer.h"
 #include "subsystems/Subsystem.h"
@@ -9,7 +9,7 @@
 #include "loops/Loop.h"
 class SuperStructureOutputer : public InfraSubsystemOutputer {
    private:
-    static std::list<Subsystem &> m_subsystemList;
+    static std::vector<Subsystem *> *m_subsystemList;
     class EnabledLoop : public Loop {
        public:
         EnabledLoop();
@@ -27,7 +27,7 @@ class SuperStructureOutputer : public InfraSubsystemOutputer {
     } m_superStructureDisabledLoop;
 
    public:
-    SuperStructureOutputer(std::list<Subsystem &> &);
+    SuperStructureOutputer(std::vector<Subsystem *> *);
 
     void RegisterEnabledloops(Looper &) override;
     void RegisterDisabledloops(Looper &) override;

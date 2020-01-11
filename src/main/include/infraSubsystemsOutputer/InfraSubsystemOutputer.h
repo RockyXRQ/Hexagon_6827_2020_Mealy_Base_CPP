@@ -8,9 +8,6 @@
 
 class InfraSubsystemOutputer {
    public:
-    InfraSubsystemOutputer();
-    virtual ~InfraSubsystemOutputer();
-
     virtual void RegisterEnabledloops(Looper &) = 0;
     virtual void RegisterDisabledloops(Looper &) = 0;
 };

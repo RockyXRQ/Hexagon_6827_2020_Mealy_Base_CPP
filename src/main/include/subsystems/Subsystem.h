@@ -4,8 +4,6 @@
 #include "loops/Looper.h"
 class Subsystem {
    public:
-    Subsystem();
-
     virtual void RegisterEnabledloop(Looper&) = 0;
 
     virtual void ReadInput() = 0;

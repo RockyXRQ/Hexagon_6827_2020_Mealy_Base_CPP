@@ -1,14 +1,14 @@
 #ifndef LOOPER_H_
 #define LOOPER_H_
 
-#include <list>
+#include <vector>
 #include <string>
 
 #include "loops/Loop.h"
 
 class Looper {
    protected:
-    std::list<Loop &> m_loopList;
+    std::vector<Loop *> *m_loopList;
     std::string m_looperName;
     bool m_Running = false;
 
@@ -16,12 +16,12 @@ class Looper {
 
    public:
     Looper();
-    Looper(std::list<Loop &> &, const char *name = "default");
+    Looper(std::vector<Loop *> *, const char *name = "default");
 
     virtual ~Looper() = default;
 
-    void MutiRegister(std::list<Loop &> &);
-    void Register(Loop &);
+    void MutiRegister(std::vector<Loop *> *);
+    void Register(Loop *);
 
     void StartLoop();
     void RunLoop();
