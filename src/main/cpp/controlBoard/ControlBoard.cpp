@@ -17,6 +17,8 @@ double ControlBoard::GetDriveTurnSpeed() {
 
 bool ControlBoard::WantChassisAutoControl() {
     //@Todo: Add auto test Button.
+    return m_joystickDrive.GetRawButton(5) && m_joystickDrive.GetRawButton(6) &&
+           m_joystickDrive.GetRawAxis(2) && m_joystickDrive.GetRawAxis(3);
 }
 
 bool ControlBoard::WantChassisManualControl() {
