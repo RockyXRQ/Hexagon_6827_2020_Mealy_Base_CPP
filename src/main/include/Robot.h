@@ -2,7 +2,6 @@
 #define ROBOT_H_
 
 #include <frc/TimedRobot.h>
-//#include <frc/WPILib.h>
 
 #include "loops/Looper.h"
 
@@ -16,6 +15,8 @@
 
 #include "infraSubsystemsOutputer/ChassisOutputer.h"
 #include "infraSubsystemsOutputer/SuperStructureOutputer.h"
+
+#include "Constants.h"
 
 class Robot : public frc::TimedRobot {
    private:
