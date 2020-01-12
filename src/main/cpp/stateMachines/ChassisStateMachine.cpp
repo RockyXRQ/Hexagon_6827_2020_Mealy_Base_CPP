@@ -1,6 +1,7 @@
 #include "stateMachines/ChassisStateMachine.h"
 
 ChassisStateMachine::ChassisStateMachine() {
+    m_isChassisRudeMode = false;
 }
 
 void ChassisStateMachine::RegisterChassis(Chassis* tempChassis) {
@@ -22,4 +23,8 @@ void ChassisStateMachine::WantManualCarefulMode(double tempLeftDemand,
                                                 double tempRightDemand) {
     m_chassis->SetLowSpeedMode();
     m_chassis->SetOpenLoopState(tempLeftDemand, tempRightDemand);
+}
+
+bool ChassisStateMachine::IsChassisRudeMode() {
+    return m_isChassisRudeMode;
 }

@@ -12,6 +12,19 @@ class SuperStructureStateMachine {
    public:
     SuperStructureStateMachine();
     void RegisterSubsystem(Subsystem *);
+    
+	void IntakeIntake();
+	void IntakeOutTake();
+	void IntakeLock();
+
+	void MagazineLoad();
+	void MagazineUnload();
+	void MagazineLock();
+	
+	void TurretLeftSpin();
+	void TurretRightSpin();
+	void TurretLock();
+	void TurretShoot();
 };
 
 #endif

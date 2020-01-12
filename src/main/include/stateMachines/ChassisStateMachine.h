@@ -6,6 +6,7 @@
 class ChassisStateMachine {
    private:
     Chassis *m_chassis;
+    bool m_isChassisRudeMode;
 
    public:
     ChassisStateMachine();
@@ -15,6 +16,7 @@ class ChassisStateMachine {
                             double tempRightDemand = 0);
     void WantManualCarefulMode(double tempLeftDemand = 0,
                                double tempRightDemand = 0);
+    bool IsChassisRudeMode();
 };
 
 #endif
