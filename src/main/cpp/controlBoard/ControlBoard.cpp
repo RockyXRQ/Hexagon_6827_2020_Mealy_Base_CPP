@@ -80,10 +80,15 @@ bool ControlBoard::WantTurretLock() {
 }
 
 bool ControlBoard::WantTurretAutoCaptureHighHole() {
+    return m_joystickSuperStructure.GetRawButton(6) &&
+           m_joystickSuperStructure.GetRawButton(4);
 }
 
 bool ControlBoard::WantTurretAutoCaptureLowHole() {
+    return m_joystickSuperStructure.GetRawButton(6) &&
+           m_joystickSuperStructure.GetRawButton(1);
 }
 
 bool ControlBoard::WantTurretShoot() {
+    return (bool) m_joystickSuperStructure.GetRawAxis(3);
 }
