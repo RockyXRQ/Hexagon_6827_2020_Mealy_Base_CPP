@@ -47,8 +47,10 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
     if (m_controlBoard.WantChassisManualRudeControl())
         m_chassisStateMachine.WantManualRudeMode();
+    
     if (m_controlBoard.WantChassisManualCarefulControl())
         m_chassisStateMachine.WantManualCarefulMode();
+    
     if (m_controlBoard.WantChassisManualControl()) {
         if (m_chassisStateMachine.IsChassisRudeMode())
             m_chassisStateMachine.WantManualRudeMode(
@@ -63,44 +65,57 @@ void Robot::TeleopPeriodic() {
                 m_controlBoard.GetDriveStrightSpeed() -
                     m_controlBoard.GetDriveTurnSpeed());
     }
+    
     if (m_controlBoard.WantIntakeBall()) {
         m_superStructureStateMachine.IntakeIntake();
         m_superStructureStateMachine.MagazineLoad();
     }
+    
     if (m_controlBoard.WantOuttakeBall()) {
         m_superStructureStateMachine.IntakeOutTake();
     }
+    
     if (m_controlBoard.WantLockIntake()) {
         m_superStructureStateMachine.IntakeLock();
     }
+    
     if (m_controlBoard.WantLoadBall()) {
         m_superStructureStateMachine.IntakeOutTake();
         m_superStructureStateMachine.MagazineLoad();
     }
+    
     if (m_controlBoard.WantUnloadBall()) {
         m_superStructureStateMachine.MagazineUnload();
     }
+    
     if (m_controlBoard.WantStopLoadBall()) {
         m_superStructureStateMachine.MagazineLock();
     }
+    
     if (m_controlBoard.WantTurretManualLeftSpin()) {
         m_superStructureStateMachine.TurretLeftSpin();
     }
+    
     if (m_controlBoard.WantTurretManualRightSpin()) {
         m_superStructureStateMachine.TurretRightSpin();
     }
+    
     if (m_controlBoard.WantTurretLock()) {
         m_superStructureStateMachine.TurretLock();
     }
+    
     if (m_controlBoard.WantTurretShoot()) {
         m_superStructureStateMachine.IntakeIntake();
         m_superStructureStateMachine.MagazineLoad();
         m_superStructureStateMachine.TurretShoot();
     }
+    
     if (m_controlBoard.WantTurretAutoCaptureHighHole()) {
     }
+    
     if (m_controlBoard.WantTurretAutoCaptureLowHole()) {
     }
+    
     m_EnabledLooper.RunLoop();
 }
 
