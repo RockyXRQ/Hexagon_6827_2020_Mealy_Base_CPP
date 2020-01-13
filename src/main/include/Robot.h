@@ -9,6 +9,8 @@
 
 #include "subsystems/Chassis.h"
 
+#include "subsystems/JetsonNanoCamera.h"
+
 #include "subsystems/Intake.h"
 #include "subsystems/Magazine.h"
 #include "subsystems/Turret.h"
@@ -30,6 +32,8 @@ class Robot : public frc::TimedRobot {
     Chassis m_chassis;
 
     // Subsystems
+    JetsonNanoCamera m_camera;
+
     Intake m_intake;
     Magazine m_magazine;
     Turret m_turret;

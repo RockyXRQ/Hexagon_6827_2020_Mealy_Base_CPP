@@ -3,8 +3,9 @@
 #include "controlBoard/ControlBoard.h"
 
 ControlBoard::ControlBoard()
-    : m_joystickDrive(Constants::JOYSTICK_DRIVE_PORT),
-      m_joystickSuperStructure(Constants::JOYSTICK_SUPERSTRUCTURE_PORT) {
+    : m_joystickDrive(constants::joystick::JOYSTICK_DRIVE_PORT),
+      m_joystickSuperStructure(
+          constants::joystick::JOYSTICK_SUPERSTRUCTURE_PORT) {
 }
 
 double ControlBoard::GetDriveStrightSpeed() {
@@ -23,9 +24,9 @@ bool ControlBoard::WantChassisAutoControl() {
 
 bool ControlBoard::WantChassisManualControl() {
     return (m_joystickDrive.GetRawAxis(3) - m_joystickDrive.GetRawAxis(2)) >
-               Constants::JOYSTICK_DRIVE_STRIGHT_DEAD_AREA ||
+               constants::joystick::JOYSTICK_DRIVE_STRIGHT_DEAD_AREA ||
            fabs(m_joystickDrive.GetRawAxis(0)) >
-               Constants::JOYSTICK_DRIVE_TURN_DEAD_AREA;
+               constants::joystick::JOYSTICK_DRIVE_TURN_DEAD_AREA;
 }
 
 bool ControlBoard::WantChassisManualRudeControl() {

@@ -2,7 +2,7 @@
 #define CONSTANTS_H_
 
 namespace constants {
-    namespace jotstick {
+    namespace joystick {
         constexpr int JOYSTICK_DRIVE_PORT = 0;
         constexpr int JOYSTICK_SUPERSTRUCTURE_PORT = 1;
 

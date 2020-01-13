@@ -3,6 +3,10 @@
 SuperStructureStateMachine::SuperStructureStateMachine() {
 }
 
+void SuperStructureStateMachine::RegisterCamera(JetsonNanoCamera *tempCamera) {
+    m_camera = tempCamera;
+}
+
 void SuperStructureStateMachine::RegisterIntake(Intake *tempIntake) {
     m_intake = tempIntake;
 }
@@ -33,3 +37,14 @@ void SuperStructureStateMachine::MagazineUnload() {
 void SuperStructureStateMachine::MagazineLock() {
 }
 
+void SuperStructureStateMachine::TurretLeftSpin() {
+}
+
+void SuperStructureStateMachine::TurretRightSpin() {
+}
+
+void SuperStructureStateMachine::TurretShoot() {
+}
+
+void SuperStructureStateMachine::TurretLock() {
+}

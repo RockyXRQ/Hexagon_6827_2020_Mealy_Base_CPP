@@ -7,6 +7,7 @@
 void Robot::RobotInit() {
     m_chassisOutputer.RegisterSubsystem(&m_chassis);
 
+    m_superStructreOutputer.RegisterSubsystem(&m_camera);
     m_superStructreOutputer.RegisterSubsystem(&m_intake);
     m_superStructreOutputer.RegisterSubsystem(&m_magazine);
     m_superStructreOutputer.RegisterSubsystem(&m_turret);
@@ -16,6 +17,7 @@ void Robot::RobotInit() {
 
     m_chassisStateMachine.RegisterChassis(&m_chassis);
 
+    m_superStructureStateMachine.RegisterCamera(&m_camera);
     m_superStructureStateMachine.RegisterIntake(&m_intake);
     m_superStructureStateMachine.RegisterMagazine(&m_magazine);
     m_superStructureStateMachine.RegisterTurret(&m_turret);
@@ -43,7 +45,7 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-    if (m_controlBoard.WantChassisManualRudeControl)
+    if (m_controlBoard.WantChassisManualRudeControl())
         m_chassisStateMachine.WantManualRudeMode();
     if (m_controlBoard.WantChassisManualCarefulControl())
         m_chassisStateMachine.WantManualCarefulMode();

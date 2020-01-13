@@ -19,6 +19,13 @@ void Turret::WriteOutput() {
                             m_periodicIO.m_o_spinDemand);
             m_shootMotor.Set(ControlMode::PercentOutput,
                              m_periodicIO.m_o_shootDemand);
+            break;
+        case POSITION_PID:
+            m_spinMotor.Set(ControlMode::PercentOutput,
+                            m_periodicIO.m_o_spinDemand);
+            m_shootMotor.Set(ControlMode::PercentOutput,
+                             m_periodicIO.m_o_shootDemand);
+            break;
     }
 }
 

@@ -12,6 +12,7 @@ void SuperStructureOutputer::RegisterSubsystem(Subsystem* tempSubsystem) {
 
 void SuperStructureOutputer::OnStart(double timeTamp) {
     for (auto s : m_subsystemList) {
+        s->ZeroSensors();
         s->ReadInput();
         s->PrintToLog();
     }

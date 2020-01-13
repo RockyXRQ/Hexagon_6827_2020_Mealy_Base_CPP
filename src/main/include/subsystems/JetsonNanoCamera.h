@@ -6,6 +6,10 @@
 class JetsonNanoCamera : public Subsystem {
    public:
     JetsonNanoCamera();
+    void ReadInput() override;
+    void WriteOutput() override;
+    void ZeroSensors() override;
+    void PrintToLog() override;
 };
 
 #endif

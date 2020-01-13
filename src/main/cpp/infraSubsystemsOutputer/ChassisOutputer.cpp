@@ -9,6 +9,7 @@ void ChassisOutputer::RegisterSubsystem(Chassis* tempChassis) {
 }
 
 void ChassisOutputer::OnStart(double timeTamp) {
+    m_chassis->ZeroSensors();
     m_chassis->ReadInput();
     m_chassis->PrintToLog();
 }
