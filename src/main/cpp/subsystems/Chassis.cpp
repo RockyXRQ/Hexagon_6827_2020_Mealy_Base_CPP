@@ -8,7 +8,6 @@ Chassis::Chassis() {
     std::cout << "the subsystem Chassis instantiate!" << std::endl;
 }
 
-
 void Chassis::ReadInput() {
 }
 
@@ -17,23 +16,26 @@ void Chassis::WriteOutput() {
         case OPEN_LOOP:
             m_leftMotor.Set(
                 ControlMode::PercentOutput,
-                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeerRate);
+                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeedRate);
             m_rightMotor.Set(
                 ControlMode::PercentOutput,
-                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeerRate);
+                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeedRate);
             break;
         case POSITION_PID:
             m_leftMotor.Set(
                 ControlMode::PercentOutput,
-                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeerRate);
+                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeedRate);
             m_rightMotor.Set(
                 ControlMode::PercentOutput,
-                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeerRate);
+                m_periodicIO.m_o_leftDemand * m_periodicIO.m_i_kSpeedRate);
             break;
     }
 }
 
 void Chassis::ZeroSensors() {
+    m_periodicIO.m_i_kSpeedRate = 1;
+    m_periodicIO.m_o_leftDemand = 0;
+    m_periodicIO.m_o_rightDemand = 0;
 }
 
 void Chassis::PrintToLog() {
@@ -66,9 +68,9 @@ void Chassis::SetPositionPIDState() {
 }
 
 void Chassis::SetHighSpeedMode() {
-    m_periodicIO.m_i_kSpeerRate = 1;
+    m_periodicIO.m_i_kSpeedRate = 1;
 }
 
 void Chassis::SetLowSpeedMode() {
-    m_periodicIO.m_i_kSpeerRate = 0.6;
+    m_periodicIO.m_i_kSpeedRate = 0.6;
 }

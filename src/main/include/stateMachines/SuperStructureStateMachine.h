@@ -1,30 +1,34 @@
 #ifndef SUPERSTRUCTURE_STATEMACHINE_H_
 #define SUPERSTRUCTURE_STATEMACHINE_H_
 
-#include <vector>
-
-#include "subsystems/Subsystem.h"
+#include "subsystems/Intake.h"
+#include "subsystems/Magazine.h"
+#include "subsystems/Turret.h"
 
 class SuperStructureStateMachine {
    private:
-    std::vector<Subsystem *> m_subsystemList;
+    Intake *m_intake;
+    Magazine *m_magazine;
+    Turret *m_turret;
 
    public:
     SuperStructureStateMachine();
-    void RegisterSubsystem(Subsystem *);
-    
-	void IntakeIntake();
-	void IntakeOutTake();
-	void IntakeLock();
+    void RegisterIntake(Intake *);
+    void RegisterMagazine(Magazine *);
+    void RegisterTurret(Turret *);
 
-	void MagazineLoad();
-	void MagazineUnload();
-	void MagazineLock();
-	
-	void TurretLeftSpin();
-	void TurretRightSpin();
-	void TurretLock();
-	void TurretShoot();
+    void IntakeIntake();
+    void IntakeOutTake();
+    void IntakeLock();
+
+    void MagazineLoad();
+    void MagazineUnload();
+    void MagazineLock();
+
+    void TurretLeftSpin();
+    void TurretRightSpin();
+    void TurretLock();
+    void TurretShoot();
 };
 
 #endif

@@ -6,13 +6,19 @@
 
 void Robot::RobotInit() {
     m_chassisOutputer.RegisterSubsystem(&m_chassis);
+
     m_superStructreOutputer.RegisterSubsystem(&m_intake);
+    m_superStructreOutputer.RegisterSubsystem(&m_magazine);
+    m_superStructreOutputer.RegisterSubsystem(&m_turret);
 
     m_EnabledLooper.Register(&m_chassisOutputer);
     m_EnabledLooper.Register(&m_superStructreOutputer);
 
     m_chassisStateMachine.RegisterChassis(&m_chassis);
-    m_superStructureStateMachine.RegisterSubsystem(&m_intake);
+
+    m_superStructureStateMachine.RegisterIntake(&m_intake);
+    m_superStructureStateMachine.RegisterMagazine(&m_magazine);
+    m_superStructureStateMachine.RegisterTurret(&m_turret);
 
     m_EnabledLooper.StartLoop();
     m_DisabledLooper.StartLoop();
@@ -113,8 +119,3 @@ int main() {
     return frc::StartRobot<Robot>();
 }
 #endif
-
-/*
-    1. EnabledLooper & DisabledLooper contorl the state update.
-    2. Subsystem manager controal the ReadInput() & WriteOutput().
-*/

@@ -1,33 +1,36 @@
-#ifndef INTAKE_H_
-#define INTAKE_H_
+#ifndef TURRET_H_
+#define TURRET_H_
 
 #include <ctre/Phoenix.h>
 
 #include "subsystems/ServoMotorSubsystem.h"
 #include "Constants.h"
 
-class Intake : public ServoMotorSubsystem {
+class Turret : public ServoMotorSubsystem {
+   private:
     ctre::phoenix::motorcontrol::can::VictorSPX m_spinMotor{
-        constants::intake::INTAKE_SPIN_MOTOR_ID};
+        constants::turret::TURRET_SPIN_MOTOR_ID};
+    ctre::phoenix::motorcontrol::can::VictorSPX m_shootMotor{
+        constants::turret::TURRET_SHOOT_MOTOR_ID};
 
     class PeriodicIO {
        public:
         // INPUT
 
         // OUTPUT
+        double m_o_shootDemand;
         double m_o_spinDemand;
 
     } m_periodicIO;
 
    public:
-    Intake(double kp = 0, double ki = 0, double kd = 0);
-
+    Turret(double kp = 0, double ki = 0, double kd = 0);
     void ReadInput() override;
     void WriteOutput() override;
     void ZeroSensors() override;
     void PrintToLog() override;
 
-    void SetOpenLoopState(double tempSpinSpeed = 0);
+    void SetOpenLoopState(double tempSpinSpeed = 0, double tempShootSpeed = 0);
     void SetPositionPIDState();
 };
 

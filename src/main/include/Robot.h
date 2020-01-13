@@ -8,7 +8,10 @@
 #include "controlBoard/ControlBoard.h"
 
 #include "subsystems/Chassis.h"
+
 #include "subsystems/Intake.h"
+#include "subsystems/Magazine.h"
+#include "subsystems/Turret.h"
 
 #include "stateMachines/ChassisStateMachine.h"
 #include "stateMachines/SuperStructureStateMachine.h"
@@ -20,24 +23,26 @@
 
 class Robot : public frc::TimedRobot {
    private:
-    //ControlBoard
+    // ControlBoard
     ControlBoard m_controlBoard;
 
-    //Chassis
+    // Chassis
     Chassis m_chassis;
 
-    //Subsystems
+    // Subsystems
     Intake m_intake;
+    Magazine m_magazine;
+    Turret m_turret;
 
-    //InfraSubsystemsOutputer
+    // InfraSubsystemsOutputer
     ChassisOutputer m_chassisOutputer;
     SuperStructureOutputer m_superStructreOutputer;
 
-    //StateMachines
+    // StateMachines
     ChassisStateMachine m_chassisStateMachine;
     SuperStructureStateMachine m_superStructureStateMachine;
-    
-    //Looper
+
+    // Looper
     Looper m_EnabledLooper{"EnabledLooper"};
     Looper m_DisabledLooper{"DisabledLooper"};
 
