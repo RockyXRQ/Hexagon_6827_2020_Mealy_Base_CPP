@@ -26,29 +26,29 @@
 class Robot : public frc::TimedRobot {
    private:
     // ControlBoard
-    ControlBoard m_controlBoard;
+    static ControlBoard m_controlBoard{};
 
     // Chassis
-    Chassis m_chassis;
+    static Chassis m_chassis{};
 
     // Subsystems
-    JetsonNanoCamera m_camera;
+    static JetsonNanoCamera m_camera{};
 
-    Intake m_intake;
-    Magazine m_magazine;
-    Turret m_turret;
+    static Intake m_intake{};
+    static Magazine m_magazine{};
+    static Turret m_turret{};
 
     // InfraSubsystemsOutputer
-    ChassisOutputer m_chassisOutputer;
-    SuperStructureOutputer m_superStructreOutputer;
+    static ChassisOutputer m_chassisOutputer;
+    static SuperStructureOutputer m_superStructreOutputer;
 
     // StateMachines
-    ChassisStateMachine m_chassisStateMachine;
-    SuperStructureStateMachine m_superStructureStateMachine;
+    static ChassisStateMachine m_chassisStateMachine;
+    static SuperStructureStateMachine m_superStructureStateMachine;
 
     // Looper
-    Looper m_EnabledLooper{"EnabledLooper"};
-    Looper m_DisabledLooper{"DisabledLooper"};
+    static Looper m_EnabledLooper{"EnabledLooper"};
+    static Looper m_DisabledLooper{"DisabledLooper"};
 
     void RobotInit() override;
     void RobotPeriodic() override;
