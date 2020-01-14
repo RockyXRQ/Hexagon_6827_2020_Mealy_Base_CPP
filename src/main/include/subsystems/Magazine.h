@@ -1,10 +1,10 @@
 #ifndef MAGAZINE_H_
 #define MAGAZINE_H_
 
-#include <ctre/Phoenix.h>
-
 #include "subsystems/ServoMotorSubsystem.h"
 #include "Constants.h"
+
+#include <ctre/Phoenix.h>
 
 class Magazine : public ServoMotorSubsystem {
    private:
@@ -29,8 +29,10 @@ class Magazine : public ServoMotorSubsystem {
     void ZeroSensors() override;
     void PrintToLog() override;
 
-    void SetOpenLoopState(double tempSpinSpeed = 0);
+    void SetOpenLoopState();
     void SetPositionPIDState();
+
+    void ManualLoad(double tempSpinSpeed = 0);
 };
 
 #endif

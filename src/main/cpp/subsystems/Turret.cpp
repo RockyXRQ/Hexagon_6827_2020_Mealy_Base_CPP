@@ -19,17 +19,24 @@ void Turret::WriteOutput() {
                             m_periodicIO.m_o_spinDemand);
             m_shootMotor.Set(ControlMode::PercentOutput,
                              m_periodicIO.m_o_shootDemand);
+            m_aimServo.Set(m_periodicIO.m_o_servoTargetPosition);
             break;
         case POSITION_PID:
             m_spinMotor.Set(ControlMode::PercentOutput,
                             m_periodicIO.m_o_spinDemand);
             m_shootMotor.Set(ControlMode::PercentOutput,
                              m_periodicIO.m_o_shootDemand);
+            m_aimServo.Set(m_periodicIO.m_o_servoTargetPosition);
             break;
     }
 }
 
 void Turret::ZeroSensors() {
+    m_periodicIO.m_i_actualPosition = 0;
+    m_periodicIO.m_i_targetPosition = 0;
+
+    m_periodicIO.m_o_servoTargetPosition =
+        constants::turret::SERVO_HIGH_POSITION;
     m_periodicIO.m_o_spinDemand = 0;
     m_periodicIO.m_o_shootDemand = 0;
 }
@@ -48,15 +55,18 @@ void Turret::PrintToLog() {
                                    m_periodicIO.m_o_spinDemand);
     frc::SmartDashboard::PutNumber("Turret shoot speed",
                                    m_periodicIO.m_o_shootDemand);
+    frc::SmartDashboard::PutString("Turret aim positioin",
+                                   m_periodicIO.m_o_servoTargetPosition ==
+                                           constants::turret::SERVO_LOW_POSITION
+                                       ? "High"
+                                       : "Low");
 }
 
-void Turret::SetOpenLoopState(double tempSpinSpeed, double tempShootSpeed) {
+void Turret::SetOpenLoopState() {
     if (m_state != OPEN_LOOP) {
         std::cout << "Turret mode switch to OPEN_LOOP" << std::endl;
         m_state = OPEN_LOOP;
     }
-    m_periodicIO.m_o_spinDemand = tempSpinSpeed;
-    m_periodicIO.m_o_shootDemand = tempShootSpeed;
 }
 
 void Turret::SetPositionPIDState() {
@@ -64,4 +74,20 @@ void Turret::SetPositionPIDState() {
         std::cout << "Magazine mode switch to POSITION_PID" << std::endl;
         m_state = POSITION_PID;
     }
+}
+void Turret::MaunalSpin(double tempSpinSpeed) {
+    m_periodicIO.m_o_spinDemand = tempSpinSpeed;
+}
+void Turret::ManualShoot(double tempShootSpeed) {
+    m_periodicIO.m_o_shootDemand = tempShootSpeed;
+}
+
+void Turret::ManualAimHighHole() {
+    m_periodicIO.m_o_servoTargetPosition =
+        constants::turret::SERVO_HIGH_POSITION;
+}
+
+void Turret::ManualAimLowHole() {
+    m_periodicIO.m_o_servoTargetPosition =
+        constants::turret::SERVO_LOW_POSITION;
 }

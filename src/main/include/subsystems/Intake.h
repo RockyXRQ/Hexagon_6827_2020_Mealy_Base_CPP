@@ -1,10 +1,10 @@
 #ifndef INTAKE_H_
 #define INTAKE_H_
 
-#include <ctre/Phoenix.h>
-
 #include "subsystems/ServoMotorSubsystem.h"
 #include "Constants.h"
+
+#include <ctre/Phoenix.h>
 
 class Intake : public ServoMotorSubsystem {
     ctre::phoenix::motorcontrol::can::VictorSPX m_spinMotor{
@@ -27,8 +27,10 @@ class Intake : public ServoMotorSubsystem {
     void ZeroSensors() override;
     void PrintToLog() override;
 
-    void SetOpenLoopState(double tempSpinSpeed = 0);
+    void SetOpenLoopState();
     void SetPositionPIDState();
+
+    void ManualSpin(double tempSpinSpeed = 0);
 };
 
 #endif

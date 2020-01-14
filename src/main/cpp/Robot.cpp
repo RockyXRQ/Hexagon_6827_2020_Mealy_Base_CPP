@@ -5,6 +5,11 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
+/*
+    TODO1:Add autonomou plan selector.
+    TODO2:Add Camera Settings.
+*/
+
 // ControlBoard
 ControlBoard Robot::m_controlBoard;
 
@@ -76,7 +81,7 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {
     m_EnabledLooper.StartLoop();
-    m_chassisStateMachine.WantManualRudeMode(0, 0);
+    m_chassisStateMachine.WantManualRudeMode();
 }
 
 void Robot::TeleopPeriodic() {
@@ -87,18 +92,9 @@ void Robot::TeleopPeriodic() {
         m_chassisStateMachine.WantManualCarefulMode();
 
     if (m_controlBoard.WantChassisManualControl()) {
-        if (m_chassisStateMachine.IsChassisRudeMode())
-            m_chassisStateMachine.WantManualRudeMode(
-                m_controlBoard.GetDriveStrightSpeed() +
-                    m_controlBoard.GetDriveTurnSpeed(),
-                m_controlBoard.GetDriveStrightSpeed() -
-                    m_controlBoard.GetDriveTurnSpeed());
-        else
-            m_chassisStateMachine.WantManualCarefulMode(
-                m_controlBoard.GetDriveStrightSpeed() +
-                    m_controlBoard.GetDriveTurnSpeed(),
-                m_controlBoard.GetDriveStrightSpeed() -
-                    m_controlBoard.GetDriveTurnSpeed());
+        m_chassisStateMachine.WantManualDrive(
+            m_controlBoard.GetDriveStrightSpeed(),
+            m_controlBoard.GetDriveTurnSpeed());
     }
 
     if (m_controlBoard.WantIntakeBall()) {

@@ -20,31 +20,41 @@ void SuperStructureStateMachine::RegisterTurret(Turret *tempTurret) {
 }
 
 void SuperStructureStateMachine::IntakeIntake() {
+    m_intake->ManualSpin(-1);
 }
 
 void SuperStructureStateMachine::IntakeOutTake() {
+    m_intake->ManualSpin(1);
 }
 
 void SuperStructureStateMachine::IntakeLock() {
+    m_intake->ManualSpin(0);
 }
 
 void SuperStructureStateMachine::MagazineLoad() {
+    m_magazine->ManualLoad(1);
 }
 
 void SuperStructureStateMachine::MagazineUnload() {
+    m_magazine->ManualLoad(-1);
 }
 
 void SuperStructureStateMachine::MagazineLock() {
+    m_magazine->ManualLoad(0);
 }
 
 void SuperStructureStateMachine::TurretLeftSpin() {
+    m_turret->MaunalSpin(1);
 }
 
 void SuperStructureStateMachine::TurretRightSpin() {
+    m_turret->MaunalSpin(-1);
 }
 
 void SuperStructureStateMachine::TurretShoot() {
+    m_turret->ManualShoot(1);
 }
 
 void SuperStructureStateMachine::TurretLock() {
+    m_turret->MaunalSpin(0);
 }

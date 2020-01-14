@@ -1,10 +1,10 @@
 #ifndef CHASSIS_H_
 #define CHASSIS_H_
 
-#include <ctre/Phoenix.h>
-
 #include "subsystems/ServoMotorSubsystem.h"
 #include "Constants.h"
+
+#include <ctre/Phoenix.h>
 
 class Chassis : public ServoMotorSubsystem {
    private:
@@ -30,10 +30,10 @@ class Chassis : public ServoMotorSubsystem {
     void ZeroSensors() override;
     void PrintToLog() override;
 
-    void SetOpenLoopState(double tempLeftDemand = 0,
-                          double tempRightDemand = 0);
+    void SetOpenLoopState();
     void SetPositionPIDState();
 
+    void ManualDrive(double tempStrightSpeed = 0, double tempTurnSpeed = 0);
     void SetHighSpeedMode();
     void SetLowSpeedMode();
 };

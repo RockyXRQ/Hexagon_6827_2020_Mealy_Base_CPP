@@ -37,8 +37,12 @@ namespace constants {
         constexpr double TURRET_KI = 0;
         constexpr double TURRET_KD = 0;
 
+        constexpr int TURRET_AIM_SERVO_CHANNEL = 3;
         constexpr int TURRET_SPIN_MOTOR_ID = 5;
         constexpr int TURRET_SHOOT_MOTOR_ID = 6;
+
+        constexpr double SERVO_HIGH_POSITION = 1;
+        constexpr double SERVO_LOW_POSITION = 0;
     }  // namespace turret
 }  // namespace constants
 

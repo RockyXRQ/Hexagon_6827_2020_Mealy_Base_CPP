@@ -42,12 +42,11 @@ void Intake::PrintToLog() {
     frc::SmartDashboard::PutNumber("Intake Speed", m_periodicIO.m_o_spinDemand);
 }
 
-void Intake::SetOpenLoopState(double tempSpinSpeed) {
+void Intake::SetOpenLoopState() {
     if (m_state != OPEN_LOOP) {
         std::cout << "Intake mode switch to OPEN_LOOP" << std::endl;
         m_state = OPEN_LOOP;
     }
-    m_periodicIO.m_o_spinDemand = tempSpinSpeed;
 }
 
 void Intake::SetPositionPIDState() {
@@ -55,4 +54,8 @@ void Intake::SetPositionPIDState() {
         std::cout << "Intake mode switch to POSITION_PID" << std::endl;
         m_state = POSITION_PID;
     }
+}
+
+void Intake::ManualSpin(double tempSpinSpeed) {
+    m_periodicIO.m_o_spinDemand = tempSpinSpeed;
 }

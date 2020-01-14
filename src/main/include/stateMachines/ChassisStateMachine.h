@@ -12,10 +12,9 @@ class ChassisStateMachine {
     ChassisStateMachine();
     void RegisterChassis(Chassis *);
     void WantAutoMode();
-    void WantManualRudeMode(double tempLeftDemand = 0,
-                            double tempRightDemand = 0);
-    void WantManualCarefulMode(double tempLeftDemand = 0,
-                               double tempRightDemand = 0);
+    void WantManualRudeMode();
+    void WantManualCarefulMode();
+    void WantManualDrive(double tempStrightSpeed = 0, double tempTurnSpeed = 0);
     bool IsChassisRudeMode();
 };
 

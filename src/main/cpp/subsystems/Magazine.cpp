@@ -48,16 +48,19 @@ void Magazine::PrintToLog() {
                                    m_periodicIO.m_o_spinDemand);
 }
 
-void Magazine::SetOpenLoopState(double tempSpinSpeed) {
+void Magazine::SetOpenLoopState() {
     if (m_state != OPEN_LOOP) {
         std::cout << "Magazine mode switch to OPEN_LOOP" << std::endl;
         m_state = OPEN_LOOP;
     }
-    m_periodicIO.m_o_spinDemand = tempSpinSpeed;
 }
 void Magazine::SetPositionPIDState() {
     if (m_state != POSITION_PID) {
         std::cout << "Magazine mode switch to POSITION_PID" << std::endl;
         m_state = POSITION_PID;
     }
+}
+
+void Magazine::ManualLoad(double tempSpinSpeed) {
+    m_periodicIO.m_o_spinDemand = tempSpinSpeed;
 }

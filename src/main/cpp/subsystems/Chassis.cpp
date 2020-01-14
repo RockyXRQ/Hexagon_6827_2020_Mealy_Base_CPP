@@ -52,13 +52,11 @@ void Chassis::PrintToLog() {
     }
 }
 
-void Chassis::SetOpenLoopState(double tempLeftDemand, double tempRightDemand) {
+void Chassis::SetOpenLoopState() {
     if (m_state != OPEN_LOOP) {
         std::cout << "Drive mode switch to OPEN_LOOP" << std::endl;
         m_state = OPEN_LOOP;
     }
-    m_periodicIO.m_o_leftDemand = tempLeftDemand;
-    m_periodicIO.m_o_rightDemand = tempRightDemand;
 }
 
 void Chassis::SetPositionPIDState() {
@@ -66,6 +64,11 @@ void Chassis::SetPositionPIDState() {
         std::cout << "Drive mode switch to POSITION_PID" << std::endl;
         m_state = POSITION_PID;
     }
+}
+
+void Chassis::ManualDrive(double tempStrightSpeed, double tempTurnSpeed) {
+    m_periodicIO.m_o_rightDemand = tempStrightSpeed - tempTurnSpeed;
+    m_periodicIO.m_o_leftDemand = tempStrightSpeed + tempTurnSpeed;
 }
 
 void Chassis::SetHighSpeedMode() {
