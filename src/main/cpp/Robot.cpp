@@ -1,8 +1,34 @@
 #include "Robot.h"
+#include "Constants.h"
 
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
+
+// ControlBoard
+ControlBoard Robot::m_controlBoard;
+
+// Chassis
+Chassis Robot::m_chassis;
+
+// Subsystems
+JetsonNanoCamera Robot::m_camera;
+
+Intake Robot::m_intake;
+Magazine Robot::m_magazine;
+Turret Robot::m_turret;
+
+// InfraSubsystemsOutputer
+ChassisOutputer Robot::m_chassisOutputer;
+SuperStructureOutputer Robot::m_superStructreOutputer;
+
+// StateMachines
+ChassisStateMachine Robot::m_chassisStateMachine;
+SuperStructureStateMachine Robot::m_superStructureStateMachine;
+
+// Looper
+Looper Robot::m_EnabledLooper;
+Looper Robot::m_DisabledLooper;
 
 void Robot::RobotInit() {
     m_chassisOutputer.RegisterSubsystem(&m_chassis);

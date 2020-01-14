@@ -1,8 +1,6 @@
 #ifndef ROBOT_H_
 #define ROBOT_H_
 
-#include <frc/TimedRobot.h>
-
 #include "loops/Looper.h"
 
 #include "controlBoard/ControlBoard.h"
@@ -23,20 +21,22 @@
 
 #include "Constants.h"
 
+#include <frc/TimedRobot.h>
+
 class Robot : public frc::TimedRobot {
    private:
     // ControlBoard
-    static ControlBoard m_controlBoard{};
+    static ControlBoard m_controlBoard;
 
     // Chassis
-    static Chassis m_chassis{};
+    static Chassis m_chassis;
 
     // Subsystems
-    static JetsonNanoCamera m_camera{};
+    static JetsonNanoCamera m_camera;
 
-    static Intake m_intake{};
-    static Magazine m_magazine{};
-    static Turret m_turret{};
+    static Intake m_intake;
+    static Magazine m_magazine;
+    static Turret m_turret;
 
     // InfraSubsystemsOutputer
     static ChassisOutputer m_chassisOutputer;
@@ -47,8 +47,8 @@ class Robot : public frc::TimedRobot {
     static SuperStructureStateMachine m_superStructureStateMachine;
 
     // Looper
-    static Looper m_EnabledLooper{"EnabledLooper"};
-    static Looper m_DisabledLooper{"DisabledLooper"};
+    static Looper m_EnabledLooper;
+    static Looper m_DisabledLooper;
 
     void RobotInit() override;
     void RobotPeriodic() override;

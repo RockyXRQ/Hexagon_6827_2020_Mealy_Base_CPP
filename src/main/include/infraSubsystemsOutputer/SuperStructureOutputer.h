@@ -1,10 +1,10 @@
 #ifndef SUPERSTRUCTURE_OUTPUTER_H_
 #define SUPERSTRUCTURE_OUTPUTER_H_
 
-#include <vector>
-
 #include "subsystems/Subsystem.h"
 #include "loops/Loop.h"
+
+#include <vector>
 
 class SuperStructureOutputer : public Loop {
    private:

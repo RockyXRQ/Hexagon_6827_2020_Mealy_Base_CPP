@@ -1,8 +1,8 @@
+#include "subsystems/Intake.h"
+
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
-
-#include "subsystems/Intake.h"
 
 Intake::Intake(double kp, double ki, double kd)
     : ServoMotorSubsystem(kp, ki, kd) {

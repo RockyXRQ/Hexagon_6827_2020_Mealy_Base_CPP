@@ -1,9 +1,9 @@
 #ifndef CONTROL_BOARD_H_
 #define CONTROL_BOARD_H_
 
-#include <frc/Joystick.h>
-
 #include "Constants.h"
+
+#include <frc/Joystick.h>
 
 class ControlBoard {
    private:

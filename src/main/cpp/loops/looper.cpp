@@ -1,9 +1,9 @@
+#include "loops/Looper.h"
+
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/Timer.h>
-
-#include "loops/Looper.h"
 
 Looper::Looper(const char *name) {
      m_timesTamp = frc::Timer::GetFPGATimestamp();

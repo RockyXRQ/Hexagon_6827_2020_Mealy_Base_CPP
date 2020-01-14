@@ -1,8 +1,8 @@
+#include "subsystems/Turret.h"
+
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
-
-#include "subsystems/Turret.h"
 
 Turret::Turret(double kp, double ki, double kd)
     : ServoMotorSubsystem(kp, ki, kd) {

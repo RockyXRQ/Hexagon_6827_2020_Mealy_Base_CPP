@@ -1,10 +1,10 @@
 #ifndef LOOPER_H_
 #define LOOPER_H_
 
+#include "loops/Loop.h"
+
 #include <vector>
 #include <string>
-
-#include "loops/Loop.h"
 
 class Looper {
    protected:

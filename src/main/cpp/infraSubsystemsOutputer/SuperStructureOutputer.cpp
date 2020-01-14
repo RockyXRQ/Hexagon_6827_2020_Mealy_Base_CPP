@@ -1,6 +1,6 @@
-#include <iostream>
-
 #include "infraSubsystemsOutputer/SuperStructureOutputer.h"
+
+#include <iostream>
 
 SuperStructureOutputer::SuperStructureOutputer() {
     std::cout << "the loop SuperStructureOutputer instantiate!" << std::endl;

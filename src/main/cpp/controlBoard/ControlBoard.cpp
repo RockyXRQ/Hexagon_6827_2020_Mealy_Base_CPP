@@ -1,6 +1,6 @@
-#include <cmath>
-
 #include "controlBoard/ControlBoard.h"
+
+#include <cmath>
 
 ControlBoard::ControlBoard()
     : m_joystickDrive(constants::joystick::JOYSTICK_DRIVE_PORT),

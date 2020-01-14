@@ -1,8 +1,8 @@
+#include "subsystems/Magazine.h"
+
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
-
-#include "subsystems/Magazine.h"
 
 Magazine::Magazine(double kp, double ki, double kd)
     : ServoMotorSubsystem(kp, ki, kd) {
