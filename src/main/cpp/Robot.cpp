@@ -6,7 +6,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 /*
-    TODO1:Add autonomou plan selector.
+    TODO1:Add autonomous plan selector.
     TODO2:Add Camera Settings.
 */
 
