@@ -4,7 +4,8 @@
 
 #include "subsystems/Chassis.h"
 
-Chassis::Chassis() {
+Chassis::Chassis(double kp, double ki, double kd)
+    : ServoMotorSubsystem(kp, ki, kd) {
     std::cout << "the subsystem Chassis instantiate!" << std::endl;
 }
 

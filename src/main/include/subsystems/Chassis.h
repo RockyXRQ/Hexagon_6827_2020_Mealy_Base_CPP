@@ -23,7 +23,7 @@ class Chassis : public ServoMotorSubsystem {
     } m_periodicIO;
 
    public:
-    Chassis();
+    Chassis(double kp = 0, double ki = 0, double kd = 0);
 
     void ReadInput() override;
     void WriteOutput() override;

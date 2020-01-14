@@ -19,8 +19,6 @@
 #include "infraSubsystemsOutputer/ChassisOutputer.h"
 #include "infraSubsystemsOutputer/SuperStructureOutputer.h"
 
-#include "Constants.h"
-
 #include <frc/TimedRobot.h>
 
 class Robot : public frc::TimedRobot {

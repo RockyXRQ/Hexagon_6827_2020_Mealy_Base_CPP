@@ -9,14 +9,22 @@
 ControlBoard Robot::m_controlBoard;
 
 // Chassis
-Chassis Robot::m_chassis;
+Chassis Robot::m_chassis{constants::chassis::CHASSIS_KP,
+                         constants::chassis::CHASSIS_KI,
+                         constants::chassis::CHASSIS_KD};
 
 // Subsystems
 JetsonNanoCamera Robot::m_camera;
 
-Intake Robot::m_intake;
-Magazine Robot::m_magazine;
-Turret Robot::m_turret;
+Intake Robot::m_intake{constants::intake::INTAKE_KP,
+                       constants::intake::INTAKE_KI,
+                       constants::intake::INTAKE_KD};
+Magazine Robot::m_magazine{constants::magazine::MAGAZINE_KP,
+                           constants::magazine::MAGAZINE_KI,
+                           constants::magazine::MAGAZINE_KD};
+Turret Robot::m_turret{constants::turret::TURRET_KP,
+                       constants::turret::TURRET_KI,
+                       constants::turret::TURRET_KD};
 
 // InfraSubsystemsOutputer
 ChassisOutputer Robot::m_chassisOutputer;
@@ -27,8 +35,8 @@ ChassisStateMachine Robot::m_chassisStateMachine;
 SuperStructureStateMachine Robot::m_superStructureStateMachine;
 
 // Looper
-Looper Robot::m_EnabledLooper;
-Looper Robot::m_DisabledLooper;
+Looper Robot::m_EnabledLooper{"EnabledLooper"};
+Looper Robot::m_DisabledLooper{"DisabledLooper"};
 
 void Robot::RobotInit() {
     m_chassisOutputer.RegisterSubsystem(&m_chassis);
