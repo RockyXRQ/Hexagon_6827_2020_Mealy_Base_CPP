@@ -8,7 +8,7 @@
 
 class Looper {
    protected:
-    std::vector<Loop *> *m_loopList;
+    std::vector<Loop *> m_loopList;
     std::string m_looperName;
     bool m_Running = false;
 

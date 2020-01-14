@@ -5,18 +5,17 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/Timer.h>
 
-Looper::Looper(const char *name) {
-     m_timesTamp = frc::Timer::GetFPGATimestamp();
-    m_looperName = name;
+Looper::Looper(const char *name) : m_loopList(), m_looperName(name) {
+    m_timesTamp = frc::Timer::GetFPGATimestamp();
 }
 
 void Looper::Register(Loop *tempLoop) {
-    m_loopList->push_back(tempLoop);
+    m_loopList.push_back(tempLoop);
 }
 
 void Looper::StartLoop() {
     std::cout << m_looperName << " start looping" << std::endl;
-    for (auto l : *m_loopList) {
+    for (auto l : m_loopList) {
         l->OnStart();
     }
     m_Running = true;
@@ -24,14 +23,14 @@ void Looper::StartLoop() {
 
 void Looper::RunLoop() {
     std::cout << m_looperName << " is looping" << std::endl;
-    for (auto l : *m_loopList) {
+    for (auto l : m_loopList) {
         l->OnLoop();
     }
 }
 
 void Looper::StopLoop() {
     std::cout << m_looperName << " stop looping" << std::endl;
-    for (auto l : *m_loopList) {
+    for (auto l : m_loopList) {
         l->OnStop();
     }
     m_Running = false;

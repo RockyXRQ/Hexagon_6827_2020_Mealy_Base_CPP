@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-SuperStructureOutputer::SuperStructureOutputer() {
+SuperStructureOutputer::SuperStructureOutputer() : m_subsystemList() {
     std::cout << "the loop SuperStructureOutputer instantiate!" << std::endl;
 }
 

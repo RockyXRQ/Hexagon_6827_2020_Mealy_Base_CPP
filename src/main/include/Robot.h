@@ -17,6 +17,8 @@
 #include "stateMachines/ChassisStateMachine.h"
 #include "stateMachines/SuperStructureStateMachine.h"
 
+#include "states/SuperStructureSate.h"
+
 #include "infraSubsystemsOutputer/ChassisOutputer.h"
 #include "infraSubsystemsOutputer/SuperStructureOutputer.h"
 
@@ -45,6 +47,9 @@ class Robot : public frc::TimedRobot {
     // StateMachines
     static ChassisStateMachine m_chassisStateMachine;
     static SuperStructureStateMachine m_superStructureStateMachine;
+
+    // States
+    static SuperStructureSate m_SuperStructureSate;
 
     // Looper
     static Looper m_EnabledLooper;

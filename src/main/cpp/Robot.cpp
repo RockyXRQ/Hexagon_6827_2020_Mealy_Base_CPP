@@ -5,9 +5,8 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
-// TODO1:Add autonomous plan selector.
-// TODO2:Add Camera Settings.
-// TODO3:Add States as InfoBoard.
+// TODO1: Fix NetworkTable problem.
+// TODO2: Add autonomous plan selector.
 
 // ControlBoard
 ControlBoard Robot::m_controlBoard;
@@ -39,11 +38,16 @@ SuperStructureOutputer Robot::m_superStructreOutputer;
 ChassisStateMachine Robot::m_chassisStateMachine;
 SuperStructureStateMachine Robot::m_superStructureStateMachine;
 
+// States
+SuperStructureSate Robot::m_SuperStructureSate;
+
 // Looper
 Looper Robot::m_EnabledLooper{"EnabledLooper"};
 Looper Robot::m_DisabledLooper{"DisabledLooper"};
 
 void Robot::RobotInit() {
+    m_camera.RegisterState(&m_SuperStructureSate);
+
     m_chassisOutputer.RegisterSubsystem(&m_chassis);
 
     m_superStructreOutputer.RegisterSubsystem(&m_camera);

@@ -5,7 +5,7 @@
 
 class ChassisStateMachine {
    private:
-    Chassis *m_chassis;
+    Chassis *m_chassis = nullptr;
     bool m_isChassisRudeMode;
 
    public:

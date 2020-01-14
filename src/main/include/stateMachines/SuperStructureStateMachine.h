@@ -10,11 +10,11 @@
 
 class SuperStructureStateMachine {
    private:
-    JetsonNanoCamera *m_camera;
-    Intake *m_intake;
-    Magazine *m_magazine;
-    Turret *m_turret;
-    Gear *m_gear;
+    JetsonNanoCamera *m_camera = nullptr;
+    Intake *m_intake = nullptr;
+    Magazine *m_magazine = nullptr;
+    Turret *m_turret = nullptr;
+    Gear *m_gear = nullptr;
 
    public:
     SuperStructureStateMachine();
