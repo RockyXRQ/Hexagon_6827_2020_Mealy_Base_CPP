@@ -4,6 +4,8 @@
 #include "subsystems/Intake.h"
 #include "subsystems/Magazine.h"
 #include "subsystems/Turret.h"
+#include "subsystems/Gear.h"
+
 #include "subsystems/JetsonNanoCamera.h"
 
 class SuperStructureStateMachine {
@@ -12,6 +14,7 @@ class SuperStructureStateMachine {
     Intake *m_intake;
     Magazine *m_magazine;
     Turret *m_turret;
+    Gear *m_gear;
 
    public:
     SuperStructureStateMachine();
@@ -20,6 +23,7 @@ class SuperStructureStateMachine {
     void RegisterIntake(Intake *);
     void RegisterMagazine(Magazine *);
     void RegisterTurret(Turret *);
+    void RegisterGear(Gear *);
 
     void IntakeIntake();
     void IntakeOutTake();

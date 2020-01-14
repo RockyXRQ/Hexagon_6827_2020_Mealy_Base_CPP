@@ -12,6 +12,7 @@
 #include "subsystems/Intake.h"
 #include "subsystems/Magazine.h"
 #include "subsystems/Turret.h"
+#include "subsystems/Gear.h"
 
 #include "stateMachines/ChassisStateMachine.h"
 #include "stateMachines/SuperStructureStateMachine.h"
@@ -35,6 +36,7 @@ class Robot : public frc::TimedRobot {
     static Intake m_intake;
     static Magazine m_magazine;
     static Turret m_turret;
+    static Gear m_gear;
 
     // InfraSubsystemsOutputer
     static ChassisOutputer m_chassisOutputer;

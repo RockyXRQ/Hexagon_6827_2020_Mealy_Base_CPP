@@ -5,10 +5,9 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
-/*
-    TODO1:Add autonomous plan selector.
-    TODO2:Add Camera Settings.
-*/
+// TODO1:Add autonomous plan selector.
+// TODO2:Add Camera Settings.
+// TODO3:Add States as InfoBoard.
 
 // ControlBoard
 ControlBoard Robot::m_controlBoard;
@@ -30,7 +29,8 @@ Magazine Robot::m_magazine{constants::magazine::MAGAZINE_KP,
 Turret Robot::m_turret{constants::turret::TURRET_KP,
                        constants::turret::TURRET_KI,
                        constants::turret::TURRET_KD};
-
+Gear Robot::m_gear{constants::gear::GEAR_KP, constants::gear::GEAR_KI,
+                   constants::gear::GEAR_KD};
 // InfraSubsystemsOutputer
 ChassisOutputer Robot::m_chassisOutputer;
 SuperStructureOutputer Robot::m_superStructreOutputer;
@@ -50,6 +50,7 @@ void Robot::RobotInit() {
     m_superStructreOutputer.RegisterSubsystem(&m_intake);
     m_superStructreOutputer.RegisterSubsystem(&m_magazine);
     m_superStructreOutputer.RegisterSubsystem(&m_turret);
+    m_superStructreOutputer.RegisterSubsystem(&m_gear);
 
     m_EnabledLooper.Register(&m_chassisOutputer);
     m_EnabledLooper.Register(&m_superStructreOutputer);
@@ -60,6 +61,7 @@ void Robot::RobotInit() {
     m_superStructureStateMachine.RegisterIntake(&m_intake);
     m_superStructureStateMachine.RegisterMagazine(&m_magazine);
     m_superStructureStateMachine.RegisterTurret(&m_turret);
+    m_superStructureStateMachine.RegisterGear(&m_gear);
 
     m_EnabledLooper.StartLoop();
     m_DisabledLooper.StartLoop();

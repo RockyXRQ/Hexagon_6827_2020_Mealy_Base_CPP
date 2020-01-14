@@ -44,6 +44,14 @@ namespace constants {
         constexpr double SERVO_HIGH_POSITION = 1;
         constexpr double SERVO_LOW_POSITION = 0;
     }  // namespace turret
+    namespace gear{
+        constexpr double GEAR_KP = 0;
+        constexpr double GEAR_KI = 0;
+        constexpr double GEAR_KD = 0;
+
+        constexpr int GEAR_ARM_MOTOR_ID = 7;
+        constexpr int GEAR_HAND_MOTOR_ID =8;
+    }
 }  // namespace constants
 
 #endif

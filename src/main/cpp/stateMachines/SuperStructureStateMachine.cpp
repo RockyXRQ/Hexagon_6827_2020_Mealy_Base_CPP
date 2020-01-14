@@ -19,6 +19,10 @@ void SuperStructureStateMachine::RegisterTurret(Turret *tempTurret) {
     m_turret = tempTurret;
 }
 
+void SuperStructureStateMachine::RegisterGear(Gear *tempGear) {
+    m_gear = tempGear;
+}
+
 void SuperStructureStateMachine::IntakeIntake() {
     m_intake->ManualSpin(-1);
 }
