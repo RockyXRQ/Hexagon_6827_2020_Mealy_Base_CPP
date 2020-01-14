@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <cameraserver/CameraServer.h>
 
 // TODO1: Fix NetworkTable problem.
 // TODO2: Add autonomous plan selector.
@@ -69,6 +70,9 @@ void Robot::RobotInit() {
 
     m_EnabledLooper.StartLoop();
     m_DisabledLooper.StartLoop();
+
+    frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
+    frc::CameraServer::GetInstance()->StartAutomaticCapture(1);
 }
 
 void Robot::RobotPeriodic() {
