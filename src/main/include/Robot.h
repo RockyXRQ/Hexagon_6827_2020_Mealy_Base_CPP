@@ -22,10 +22,12 @@
 #include "infraSubsystemsOutputer/ChassisOutputer.h"
 #include "infraSubsystemsOutputer/SuperStructureOutputer.h"
 
+#include "auto/AutoExcutor.h"
+
 #include <frc/TimedRobot.h>
 
 class Robot : public frc::TimedRobot {
-   private:
+   public:
     // ControlBoard
     static ControlBoard m_controlBoard;
 
@@ -54,6 +56,9 @@ class Robot : public frc::TimedRobot {
     // Looper
     static Looper m_EnabledLooper;
     static Looper m_DisabledLooper;
+
+    // AutoExcutor
+    static AutoExcutor m_autoExcutor;
 
     void RobotInit() override;
     void RobotPeriodic() override;

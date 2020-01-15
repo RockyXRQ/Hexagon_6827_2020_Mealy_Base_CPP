@@ -33,6 +33,8 @@ class Magazine : public ServoMotorSubsystem {
     void SetPositionPIDState();
 
     void ManualLoad(double tempSpinSpeed = 0);
+    
+    bool AutoLoad(double tempSpinAngle = 0);
 };
 
 #endif

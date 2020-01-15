@@ -6,8 +6,8 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <cameraserver/CameraServer.h>
 
-// TODO1: Fix NetworkTable problem.
-// TODO2: Add autonomous plan selector.
+// TODO1: Add autonomous plan selector.
+// TODO2: Rewrite ControlBoard func. name.
 
 // ControlBoard
 ControlBoard Robot::m_controlBoard;
@@ -46,6 +46,9 @@ SuperStructureSate Robot::m_SuperStructureSate;
 Looper Robot::m_EnabledLooper{"EnabledLooper"};
 Looper Robot::m_DisabledLooper{"DisabledLooper"};
 
+// AutoExcutor
+AutoExcutor Robot::m_autoExcutor;
+
 void Robot::RobotInit() {
     m_camera.RegisterState(&m_SuperStructureSate);
 
@@ -80,6 +83,9 @@ void Robot::RobotPeriodic() {
     m_DisabledLooper.OutputToSmartDashboard();
 }
 void Robot::AutonomousInit() {
+    m_autoExcutor.SetMode(1);
+    m_autoExcutor.Start();
+
     m_EnabledLooper.StartLoop();
     m_chassisStateMachine.WantAutoMode();
 }
@@ -87,9 +93,11 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {
     m_EnabledLooper.RunLoop();
     m_chassisStateMachine.WantAutoMode();
+    m_autoExcutor.Run();
 }
 
 void Robot::TeleopInit() {
+    m_autoExcutor.Stop();
     m_EnabledLooper.StartLoop();
     m_chassisStateMachine.WantManualRudeMode();
 }

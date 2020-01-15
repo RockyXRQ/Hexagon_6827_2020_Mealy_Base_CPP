@@ -39,6 +39,9 @@ class Turret : public ServoMotorSubsystem {
     void ManualShoot(double tempShootSpeed = 0);
     void ManualAimHighHole();
     void ManualAimLowHole();
+
+    bool AutoAimHighHole();
+    bool AutoShoot();
 };
 
 #endif

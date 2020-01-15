@@ -91,3 +91,6 @@ void Turret::ManualAimLowHole() {
     m_periodicIO.m_o_servoTargetPosition =
         constants::turret::SERVO_LOW_POSITION;
 }
+
+void Turret::AutoAimHighHole() {
+}

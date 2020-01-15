@@ -36,6 +36,9 @@ class Chassis : public ServoMotorSubsystem {
     void ManualDrive(double tempStrightSpeed = 0, double tempTurnSpeed = 0);
     void SetHighSpeedMode();
     void SetLowSpeedMode();
+
+    bool AutoDriveByLengenth(double tempLengenth = 0);
+    bool AutoTurnByDegree(double tempAngle = 0);
 };
 
 #endif
