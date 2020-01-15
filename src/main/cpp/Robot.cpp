@@ -6,8 +6,9 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <cameraserver/CameraServer.h>
 
-// TODO1: Add autonomous plan selector.
-// TODO2: Rewrite ControlBoard func. name.
+// TODO1: Change Chassis motor to Falcon 500.
+// TODO2: Add Chassis auto code.
+// TODO3: Write Jetson Nano python Vision part.
 
 // ControlBoard
 ControlBoard Robot::m_controlBoard;
@@ -91,9 +92,9 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
+    m_autoExcutor.Run();
     m_EnabledLooper.RunLoop();
     m_chassisStateMachine.WantAutoMode();
-    m_autoExcutor.Run();
 }
 
 void Robot::TeleopInit() {
