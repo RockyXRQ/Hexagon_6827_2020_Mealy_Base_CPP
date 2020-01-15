@@ -12,11 +12,17 @@ class JetsonNanoCamera : public Subsystem {
    private:
     nt::NetworkTableEntry m_targetXEntry;
     nt::NetworkTableEntry m_targetYEntry;
+    
+    nt::NetworkTableEntry m_actualXEntry;
+    nt::NetworkTableEntry m_actualYEntry;
     class PeriodicIO {
        public:
         // INPUT
         double m_i_targetX;
         double m_i_targetY;
+
+        double m_i_actualX;
+        double m_i_actualY;
         // OUTPUT
     } m_periodicIO;
 

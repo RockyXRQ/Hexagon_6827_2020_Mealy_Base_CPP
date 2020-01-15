@@ -64,3 +64,8 @@ void Magazine::SetPositionPIDState() {
 void Magazine::ManualLoad(double tempSpinSpeed) {
     m_periodicIO.m_o_spinDemand = tempSpinSpeed;
 }
+
+bool Magazine::AutoLoad(double tempSpinSpeed) {
+    ManualLoad(tempSpinSpeed);
+    return false;
+}

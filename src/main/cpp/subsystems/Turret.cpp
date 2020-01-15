@@ -10,6 +10,8 @@ Turret::Turret(double kp, double ki, double kd)
 }
 
 void Turret::ReadInput() {
+    m_periodicIO.m_i_actualPosition = Robot::m_SuperStructureSate.GetActualX;
+    m_periodicIO.m_i_targetPosition = Robot::m_SuperStructureSate.GetTargetX;
 }
 
 void Turret::WriteOutput() {
@@ -92,5 +94,13 @@ void Turret::ManualAimLowHole() {
         constants::turret::SERVO_LOW_POSITION;
 }
 
-void Turret::AutoAimHighHole() {
+bool Turret::AutoAimHighHole() {
+    m_periodicIO.m_o_spinDemand = PositionPIDOutput(
+        m_periodicIO.m_i_actualPosition, m_periodicIO.m_i_targetPosition);
+    return m_periodicIO.m_i_actualPosition == m_periodicIO.m_i_targetPosition;
+}
+
+bool Turret::AutoShoot() {
+    ManualShoot(1);
+    return false;
 }

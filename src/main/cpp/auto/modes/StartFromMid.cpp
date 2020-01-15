@@ -15,7 +15,7 @@ void StartFromMid::Resume() {
             GoToNextState(m_turret->AutoAimHighHole());
             break;
         case 3:
-            GoToNextState(m_turret->AutoShoot());
+            GoToNextState(m_magazine->AutoLoad(1) && m_turret->AutoShoot());
             break;
     }
 }

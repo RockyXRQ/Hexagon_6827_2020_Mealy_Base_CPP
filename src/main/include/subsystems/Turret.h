@@ -7,6 +7,8 @@
 #include <frc/Servo.h>
 #include <ctre/Phoenix.h>
 
+#include <Robot.h>
+
 class Turret : public ServoMotorSubsystem {
    private:
     ctre::phoenix::motorcontrol::can::VictorSPX m_spinMotor{

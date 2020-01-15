@@ -12,11 +12,11 @@ class AutoExcutor {
     StartFromRight m_startFromRight;
     StartFromMid m_startFromMid;
 
-    AutoModeBase* m_autoMode;
+    AutoModeBase* m_autoMode = nullptr;
 
    public:
     AutoExcutor();
-    
+
     void SetMode(int);
 
     void Start();
