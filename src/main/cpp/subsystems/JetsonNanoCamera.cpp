@@ -4,8 +4,9 @@
 #include "frc/smartdashboard/SmartDashboard.h"
 
 JetsonNanoCamera::JetsonNanoCamera() {
-    auto m_inst = nt::NetworkTableInstance::GetDefault();
-    auto m_networkTable = m_inst.GetTable("JETSONNANO");
+    auto m_networkTable =
+        nt::NetworkTableInstance::GetDefault().GetTable("JETSONNANO");
+
     m_targetXEntry = m_networkTable->GetEntry("TargetX");
     m_targetYEntry = m_networkTable->GetEntry("TargetY");
 
