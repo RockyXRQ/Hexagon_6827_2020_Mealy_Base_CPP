@@ -10,8 +10,8 @@
 
 class JetsonNanoCamera : public Subsystem {
    private:
-    std::shared_ptr<nt::NetworkTable> m_networkTable =
-        nt::NetworkTable::GetTable("VISION_TABLE");
+    nt::NetworkTableEntry m_targetXEntry;
+    nt::NetworkTableEntry m_targetYEntry;
     class PeriodicIO {
        public:
         // INPUT

@@ -4,6 +4,11 @@
 #include "frc/smartdashboard/SmartDashboard.h"
 
 JetsonNanoCamera::JetsonNanoCamera() {
+    auto m_inst = nt::NetworkTableInstance::GetDefault();
+    auto m_networkTable = m_inst.GetTable("JETSONNANO");
+    m_targetXEntry = m_networkTable->GetEntry("TargetX");
+    m_targetYEntry = m_networkTable->GetEntry("TargetY");
+
     std::cout << "the subsystem Jetson Nano & Camera instantiate!" << std::endl;
 }
 
@@ -13,10 +18,8 @@ void JetsonNanoCamera::RegisterState(
 }
 
 void JetsonNanoCamera::ReadInput() {
-    m_periodicIO.m_i_targetX =
-        m_networkTable->GetEntry("TargetX").GetDouble(0.0);
-    m_periodicIO.m_i_targetY =
-        m_networkTable->GetEntry("TargetY").GetDouble(0.0);
+    m_periodicIO.m_i_targetX = m_targetXEntry.GetDouble(0.0);
+    m_periodicIO.m_i_targetY = m_targetYEntry.GetDouble(0.0);
 }
 
 void JetsonNanoCamera::WriteOutput() {
